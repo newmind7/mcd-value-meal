@@ -1,0 +1,183 @@
+{
+  "_mock": false,
+  "_note": "单人场景的历史价格样本，由真实查询整理而非原始响应；分配由技能构造，券码已替换为不可兑换模拟标识。不是当前门店报价。",
+  "_priceSource": "storeCode=3570022（麦当劳桂林十字街餐厅），orderType=1，beType=1，到店自取。1440 麦辣鸡腿汉堡 单份无券 2250 分；带 11.9 元券后 1190 分；两行(1 券 + 1 原价) 合计 3440 分；9900016534 王牌炸鸡任选2 带券 1990 分。",
+  "budget": 40,
+  "people": 1,
+  "storeCode": "3570022",
+  "orderType": 1,
+  "beType": 1,
+  "plans": [
+    {
+      "planId": "S1",
+      "label": "单人·用券单堡（¥11.90）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "A1",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1190,
+          "spicy": "spicy",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_A"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "A1",
+          "dinerId": "D1",
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 1190,
+      "pointsCost": 0
+    },
+    {
+      "planId": "S2",
+      "label": "单人·炸鸡任选2 用券（¥19.90）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "B1",
+          "productCode": "9900016534",
+          "name": "王牌炸鸡任选2",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1990,
+          "spicy": "unknown",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_B"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "B1",
+          "dinerId": "D1",
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 1990,
+      "pointsCost": 0
+    },
+    {
+      "planId": "S3",
+      "label": "单人·双堡 1 券 + 1 原价（¥34.40）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "C1",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡（用券）",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1190,
+          "spicy": "spicy",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_A"
+        },
+        {
+          "lineId": "C2",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡（原价）",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 2250,
+          "spicy": "spicy",
+          "role": "main"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "C1",
+          "dinerId": "D1",
+          "qty": 1
+        },
+        {
+          "lineId": "C2",
+          "dinerId": "D1",
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 3440,
+      "pointsCost": 0
+    },
+    {
+      "planId": "S4",
+      "label": "单人·双堡无券基准（¥45.00，超预算）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "E1",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡",
+          "qty": 2,
+          "actualQty": 2,
+          "unitCashCent": 2250,
+          "spicy": "spicy",
+          "role": "main"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "E1",
+          "dinerId": "D1",
+          "qty": 2
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 4500,
+      "pointsCost": 0
+    }
+  ],
+  "_couponCodesSynthetic": true
+}
