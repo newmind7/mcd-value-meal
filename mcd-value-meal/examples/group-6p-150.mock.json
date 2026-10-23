@@ -1,0 +1,951 @@
+{
+  "_mock": true,
+  "_note": "【模拟用例】方案组合、人数分配、辣度标注均为本地构造，用于验证 plan_math.py 的校验逻辑，不是接口返回结果。",
+  "_priceSource": "部分单品价格取自2026-10-23历史查询；完整六人购物车未经过真实接口试算。券码全部为不可兑换的模拟标识；辣度、分配和组合为本地测试设定，不代表官方餐品属性。",
+  "budget": 150,
+  "people": 6,
+  "storeCode": "3570022",
+  "orderType": 1,
+  "beType": 1,
+  "plans": [
+    {
+      "planId": "P1",
+      "label": "全单·1 张券（应通过）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D3",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D4",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D5",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D6",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "L1",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "L2",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "L3",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1190,
+          "spicy": "spicy",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_A"
+        },
+        {
+          "lineId": "L4",
+          "productCode": "521952",
+          "name": "龙焰鸡腿堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1590,
+          "spicy": "spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "L5",
+          "productCode": "9900013304",
+          "name": "人气经典随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1490,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "L6",
+          "productCode": "9900015568",
+          "name": "精选超值随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1390,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "L7",
+          "productCode": "4810",
+          "name": "薯条",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1350,
+          "spicy": "not-spicy",
+          "role": "side"
+        },
+        {
+          "lineId": "L8",
+          "productCode": "9900008751",
+          "name": "可乐",
+          "qty": 2,
+          "actualQty": 2,
+          "unitCashCent": 950,
+          "spicy": "not-spicy",
+          "role": "drink"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "L1",
+          "dinerId": "D1",
+          "qty": 1
+        },
+        {
+          "lineId": "L2",
+          "dinerId": "D2",
+          "qty": 1
+        },
+        {
+          "lineId": "L3",
+          "dinerId": "D3",
+          "qty": 1
+        },
+        {
+          "lineId": "L4",
+          "dinerId": "D4",
+          "qty": 1
+        },
+        {
+          "lineId": "L5",
+          "dinerId": "D5",
+          "qty": 1
+        },
+        {
+          "lineId": "L6",
+          "dinerId": "D6",
+          "qty": 1
+        }
+      ],
+      "shared": [
+        {
+          "lineId": "L7",
+          "dinerIds": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 1
+        },
+        {
+          "lineId": "L8",
+          "dinerIds": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 2
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 12310,
+      "pointsCost": 0
+    },
+    {
+      "planId": "P2",
+      "label": "更便宜但少 2 份餐（应被淘汰）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D3",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D4",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D5",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D6",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "M1",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "M2",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "M3",
+          "productCode": "9900013304",
+          "name": "人气经典随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1490,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "M4",
+          "productCode": "9900015568",
+          "name": "精选超值随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1390,
+          "spicy": "unknown",
+          "role": "main"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "M1",
+          "dinerId": "D1",
+          "qty": 1
+        },
+        {
+          "lineId": "M2",
+          "dinerId": "D2",
+          "qty": 1
+        },
+        {
+          "lineId": "M3",
+          "dinerId": "D3",
+          "qty": 1
+        },
+        {
+          "lineId": "M4",
+          "dinerId": "D4",
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 6280,
+      "pointsCost": 0
+    },
+    {
+      "planId": "P3",
+      "label": "接口把 2 份压成 1 份（应被淘汰）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "N1",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡",
+          "qty": 2,
+          "actualQty": 1,
+          "unitCashCent": 1190,
+          "spicy": "spicy",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_A"
+        },
+        {
+          "lineId": "N2",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "N1",
+          "dinerId": "D1",
+          "qty": 2
+        },
+        {
+          "lineId": "N2",
+          "dinerId": "D2",
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 2890,
+      "pointsCost": 0
+    },
+    {
+      "planId": "P4",
+      "label": "辣度未知分给不吃辣的人（应被淘汰）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "X1",
+          "productCode": "9900013304",
+          "name": "人气经典随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1490,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "X2",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "X1",
+          "dinerId": "D1",
+          "qty": 1
+        },
+        {
+          "lineId": "X2",
+          "dinerId": "D2",
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 3190,
+      "pointsCost": 0
+    },
+    {
+      "planId": "P5",
+      "label": "需求达标但超预算（应被预算过滤）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D3",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D4",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D5",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D6",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "S1",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "S2",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "S3",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1190,
+          "spicy": "spicy",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_A"
+        },
+        {
+          "lineId": "S4",
+          "productCode": "521952",
+          "name": "龙焰鸡腿堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1590,
+          "spicy": "spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "S5",
+          "productCode": "9900013304",
+          "name": "人气经典随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1490,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "S6",
+          "productCode": "9900015568",
+          "name": "精选超值随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1390,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "S7",
+          "productCode": "4810",
+          "name": "薯条",
+          "qty": 2,
+          "actualQty": 2,
+          "unitCashCent": 1350,
+          "spicy": "not-spicy",
+          "role": "side"
+        },
+        {
+          "lineId": "S8",
+          "productCode": "9900008751",
+          "name": "可乐",
+          "qty": 2,
+          "actualQty": 2,
+          "unitCashCent": 950,
+          "spicy": "not-spicy",
+          "role": "drink"
+        },
+        {
+          "lineId": "S9",
+          "productCode": "1100",
+          "name": "巨无霸",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 2550,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "S10",
+          "productCode": "1700",
+          "name": "麦辣鸡翅",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1500,
+          "spicy": "spicy",
+          "role": "side"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "S1",
+          "dinerId": "D1",
+          "qty": 1
+        },
+        {
+          "lineId": "S2",
+          "dinerId": "D2",
+          "qty": 1
+        },
+        {
+          "lineId": "S3",
+          "dinerId": "D3",
+          "qty": 1
+        },
+        {
+          "lineId": "S4",
+          "dinerId": "D4",
+          "qty": 1
+        },
+        {
+          "lineId": "S5",
+          "dinerId": "D5",
+          "qty": 1
+        },
+        {
+          "lineId": "S6",
+          "dinerId": "D6",
+          "qty": 1
+        },
+        {
+          "lineId": "S9",
+          "dinerId": "D5",
+          "qty": 1
+        }
+      ],
+      "shared": [
+        {
+          "lineId": "S7",
+          "dinerIds": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 2
+        },
+        {
+          "lineId": "S8",
+          "dinerIds": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 2
+        },
+        {
+          "lineId": "S10",
+          "dinerIds": [
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 1
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 16360,
+      "pointsCost": 0
+    },
+    {
+      "planId": "P6",
+      "label": "拆单但复用同一张券实例（应被淘汰）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "orders": [
+        {
+          "orderId": "O1",
+          "items": [
+            {
+              "lineId": "T1",
+              "productCode": "1440",
+              "name": "麦辣鸡腿汉堡",
+              "qty": 1,
+              "actualQty": 1,
+              "unitCashCent": 1190,
+              "spicy": "spicy",
+              "role": "main",
+              "couponCode": "MOCK_COUPON_A"
+            }
+          ],
+          "allocation": [
+            {
+              "lineId": "T1",
+              "dinerId": "D2",
+              "qty": 1
+            }
+          ],
+          "feesCent": {
+            "delivery": 0,
+            "packing": 0
+          },
+          "cashCent": 1190,
+          "pointsCost": 0
+        },
+        {
+          "orderId": "O2",
+          "items": [
+            {
+              "lineId": "T2",
+              "productCode": "1440",
+              "name": "麦辣鸡腿汉堡",
+              "qty": 1,
+              "actualQty": 1,
+              "unitCashCent": 1190,
+              "spicy": "spicy",
+              "role": "main",
+              "couponCode": "MOCK_COUPON_A"
+            }
+          ],
+          "allocation": [
+            {
+              "lineId": "T2",
+              "dinerId": "D1",
+              "qty": 1
+            }
+          ],
+          "feesCent": {
+            "delivery": 0,
+            "packing": 0
+          },
+          "cashCent": 1190,
+          "pointsCost": 0
+        }
+      ]
+    },
+    {
+      "planId": "P7",
+      "label": "同现金但消耗积分（排序应落后于 P1）",
+      "diners": [
+        {
+          "dinerId": "D1",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D2",
+          "spicyAllowed": false,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D3",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D4",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D5",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        },
+        {
+          "dinerId": "D6",
+          "spicyAllowed": true,
+          "minReq": {
+            "main": 1
+          }
+        }
+      ],
+      "items": [
+        {
+          "lineId": "R1",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "R2",
+          "productCode": "1450",
+          "name": "麦香鸡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1700,
+          "spicy": "not-spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "R3",
+          "productCode": "1440",
+          "name": "麦辣鸡腿汉堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1190,
+          "spicy": "spicy",
+          "role": "main",
+          "couponCode": "MOCK_COUPON_A"
+        },
+        {
+          "lineId": "R4",
+          "productCode": "521952",
+          "name": "龙焰鸡腿堡",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1590,
+          "spicy": "spicy",
+          "role": "main"
+        },
+        {
+          "lineId": "R5",
+          "productCode": "9900013304",
+          "name": "人气经典随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1490,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "R6",
+          "productCode": "9900015568",
+          "name": "精选超值随心配",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1390,
+          "spicy": "unknown",
+          "role": "main"
+        },
+        {
+          "lineId": "R7",
+          "productCode": "4810",
+          "name": "薯条",
+          "qty": 1,
+          "actualQty": 1,
+          "unitCashCent": 1350,
+          "spicy": "not-spicy",
+          "role": "side"
+        },
+        {
+          "lineId": "R8",
+          "productCode": "9900008751",
+          "name": "可乐",
+          "qty": 2,
+          "actualQty": 2,
+          "unitCashCent": 950,
+          "spicy": "not-spicy",
+          "role": "drink"
+        }
+      ],
+      "allocation": [
+        {
+          "lineId": "R1",
+          "dinerId": "D1",
+          "qty": 1
+        },
+        {
+          "lineId": "R2",
+          "dinerId": "D2",
+          "qty": 1
+        },
+        {
+          "lineId": "R3",
+          "dinerId": "D3",
+          "qty": 1
+        },
+        {
+          "lineId": "R4",
+          "dinerId": "D4",
+          "qty": 1
+        },
+        {
+          "lineId": "R5",
+          "dinerId": "D5",
+          "qty": 1
+        },
+        {
+          "lineId": "R6",
+          "dinerId": "D6",
+          "qty": 1
+        }
+      ],
+      "shared": [
+        {
+          "lineId": "R7",
+          "dinerIds": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 1
+        },
+        {
+          "lineId": "R8",
+          "dinerIds": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D6"
+          ],
+          "qty": 2
+        }
+      ],
+      "feesCent": {
+        "delivery": 0,
+        "packing": 0
+      },
+      "cashCent": 12310,
+      "pointsCost": 49.6
+    }
+  ]
+}
